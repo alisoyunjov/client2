@@ -9,11 +9,11 @@ import { useHistory } from "react-router-dom";
 import authService from "../../services/authService";
 
 const passwordReg = /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[a-zA-Z]).{8,}$/;
-// const emailReg = /^([a-zA-Z0-9_\-.]+)@link.cuhk.edu.hk$/;
+const emailReg = /^([a-zA-Z0-9_\-.]+)@decodecure.com$/;
 
 const validationSchema = yup.object({
     name: yup.string().min(3, "Please enter valid name").required("Full name is required"),
-    // email: yup.string().matches(emailReg, "Please enter a valid email address").required(),
+    email: yup.string().matches(emailReg, "Please enter a valid email address").required(),
     password: yup.string().matches(passwordReg, "Password is weak! There should be at least one uppercase, lowercase, and digit characters").required(),
     confirmPassword: yup.string().required("Please confirm your password").when("password", {
         is: (val) => (val && val.length > 0 ? true : false),
